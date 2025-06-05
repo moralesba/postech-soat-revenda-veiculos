@@ -14,4 +14,10 @@ class VehicleRepositoryImpl(private val jpaRepository: VehicleJPARepository) : V
         val savedEntity = jpaRepository.save(entity)
         return savedEntity.toDomain()
     }
+
+    override fun findById(id: Long): Vehicle? {
+        return jpaRepository.findById(id)
+            .map { it.toDomain() } // Mapeia de Entity para Domain se encontrar
+            .orElse(null)
+    }
 }

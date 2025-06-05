@@ -4,4 +4,5 @@ import br.com.postech.soat.revendaveiculos.domain.entities.Vehicle
 
 interface VehicleRepository {
     fun save(vehicle: Vehicle): Vehicle
+    fun findById(id: Long): Vehicle?
 }
