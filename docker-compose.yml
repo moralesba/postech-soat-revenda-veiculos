@@ -1,0 +1,17 @@
+# docker-compose.yml
+services:
+  db:
+    image: postgres:14-alpine
+    container_name: revenda-db
+    restart: always
+    environment:
+      - POSTGRES_USER=postech
+      - POSTGRES_PASSWORD=soat123
+      - POSTGRES_DB=revenda_veiculos
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data: {}
