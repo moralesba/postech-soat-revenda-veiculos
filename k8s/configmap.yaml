@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: revenda-configmap
+data:
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://revenda-db-service:5432/revenda_veiculos"
+  SPRING_DATASOURCE_USERNAME: "postech"

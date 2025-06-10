@@ -8,10 +8,12 @@ enum class VehicleStatus {
 
 data class Vehicle(
     val id: Long? = null,
-    val marca: String,
-    val modelo: String,
     val ano: Int,
     val cor: String,
+    val marca: String,
+    val modelo: String,
     val preco: BigDecimal,
-    var status: VehicleStatus
+    var status: VehicleStatus,
+    var cpfComprador: String? = null,
+    var codigoPagamento: String? = null
 )

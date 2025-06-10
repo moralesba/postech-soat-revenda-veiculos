@@ -9,24 +9,28 @@ import java.math.BigDecimal
 data class VehicleEntity(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
-    val marca: String,
-    val modelo: String,
     val ano: Int,
     val cor: String,
+    val marca: String,
+    val modelo: String,
     val preco: BigDecimal,
     @Enumerated(EnumType.STRING)
-    val status: VehicleStatus
+    val status: VehicleStatus,
+    val cpfComprador: String?,
+    val codigoPagamento: String?
 )
 
 // Funções de Mapeamento para converter entre Domínio e Persistência
 fun VehicleEntity.toDomain(): Vehicle = Vehicle(
     id = this.id,
-    marca = this.marca,
-    modelo = this.modelo,
     ano = this.ano,
     cor = this.cor,
+    marca = this.marca,
     preco = this.preco,
-    status = this.status
+    status = this.status,
+    modelo = this.modelo,
+    cpfComprador = this.cpfComprador,
+    codigoPagamento = this.codigoPagamento
 )
 
 fun Vehicle.toEntity(): VehicleEntity = VehicleEntity(
@@ -36,5 +40,7 @@ fun Vehicle.toEntity(): VehicleEntity = VehicleEntity(
     ano = this.ano,
     cor = this.cor,
     preco = this.preco,
-    status = this.status
+    status = this.status,
+    cpfComprador = this.cpfComprador,
+    codigoPagamento = this.codigoPagamento
 )

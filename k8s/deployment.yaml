@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: revenda-api-deployment
+spec:
+  # Quantas cópias (pods) da nossa aplicação devem rodar
+  replicas: 1
+  selector:
+    matchLabels:
+      app: revenda-api
+  template:
+    metadata:
+      labels:
+        app: revenda-api
+    spec:
+      containers:
+        - name: revenda-api-container
+          image: bamorales/revenda-api:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: revenda-configmap
+            - secretRef:
+                name: revenda-secrets

@@ -1,4 +1,4 @@
-package br.com.postech.soat.revendaveiculos.infrastructure.web.controllers.dto
+package br.com.postech.soat.revendaveiculos.infrastructure.web.controllers
 
 import br.com.postech.soat.revendaveiculos.domain.entities.Vehicle
 import br.com.postech.soat.revendaveiculos.domain.entities.VehicleStatus
@@ -16,3 +16,9 @@ data class UpdateVehicleRequest(
         return Vehicle(id = id, marca = marca, modelo = modelo, ano = ano, cor = cor, preco = preco, status = VehicleStatus.A_VENDA)
     }
 }
+
+data class InitiateSaleRequest(
+    @field:NotBlank(message = "CPF do comprador não pode ser vazio.")
+    @field:Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}-?\\d{2}", message = "Formato de CPF inválido.")
+    val cpfComprador: String
+)
